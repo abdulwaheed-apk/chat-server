@@ -1,15 +1,15 @@
-import mongoose, { Schema,  Document } from "mongoose";
-import validator from "validator";
+import mongoose, { Schema, Document } from 'mongoose'
+import validator from 'validator'
 
 export interface IUser extends Document {
-    name: string;
-    email: string;
-    password: string;
-    createdAt: Date;
-    updatedAt: Date;
+    name: string
+    email: string
+    password: string
+    createdAt: Date
+    updatedAt: Date
 }
 
-const UserSchema:Schema = new Schema(
+const UserSchema: Schema = new Schema(
     {
         name: {
             type: String,
@@ -23,17 +23,17 @@ const UserSchema:Schema = new Schema(
             unique: true,
             trim: true,
             lowercase: true,
-            validate: [validator.isEmail, "Please provide a valid email."]
+            validate: [validator.isEmail, 'Please provide a valid email.'],
         },
         password: {
             type: String,
             trim: false,
             required: [true, 'Password must be provided'],
             minlength: 8,
-        }
+        },
     },
     {
-        timestamps: true
+        timestamps: true,
     }
 )
 
