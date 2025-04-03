@@ -2,9 +2,13 @@ FROM node:18-alpine
 
 WORKDIR /usr/src/app
 
-COPY package*.json ./
+# Install PNPM
+RUN corepack enable && corepack prepare pnpm@latest --activate
 
-RUN pnpm install
+# Copy dependencies files
+COPY package.json pnpm-lock.yaml ./
+
+RUN pnpm install --frozen-lockfile
 
 COPY . .
 

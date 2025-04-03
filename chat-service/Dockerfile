@@ -2,14 +2,18 @@ FROM node:18-alpine
 
 WORKDIR /usr/src/app
 
-COPY package*.json ./
+# Install PNPM
+RUN corepack enable && corepack prepare pnpm@latest --activate
 
-RUN yarn install
+# Copy dependencies files
+COPY package.json pnpm-lock.yaml ./
+
+RUN pnpm install --frozen-lockfile
 
 COPY . .
 
-RUN yarn build
+RUN pnpm build
 
 EXPOSE 8082
 
-CMD [ "yarn", "start" ]
+CMD [ "pnpm", "start" ]
