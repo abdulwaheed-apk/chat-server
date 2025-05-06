@@ -63,12 +63,14 @@ This application showcases a complete microservices-based backend system that su
 
 ## 📁 Project Structure
 
+```
 chat-server
-├── chat-service
-├── gateway
-├── nginx
-├── notification-service
-├── user-service
-├── docker-compose.yml
-├── README.md
-└── .gitignore
+    ├── chat-service
+    ├── gateway
+    ├── nginx
+    ├── notification-service
+    ├── user-service
+    ├── docker-compose.yml
+    ├── README.md
+    └── .gitignore
+```
